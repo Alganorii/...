@@ -123,18 +123,24 @@ function crearRamo(ramo, columna) {
 }
 
 function actualizarTodo() {
-  mallaDiv.innerHTML = "";
-  for (let i = 1; i <= 10; i++) {
-    const semestre = document.createElement("div");
-    semestre.className = "semestre";
-    semestre.textContent = `Semestre ${i}`;
-    semestre.style.gridColumn = i;
-    mallaDiv.appendChild(semestre);
+  mallaDiv.innerHTML = "";
+  for (let i = 1; i <= 10; i++) {
+    const columna = document.createElement("div");
+    columna.className = "columna";
+    columna.style.gridColumn = i;
 
-    ramos.filter(r => r.semestre === i).forEach(ramo => {
-      crearRamo(ramo, i);
-    });
-  }
+    const titulo = document.createElement("h2");
+    titulo.textContent = `Semestre ${i}`;
+    columna.appendChild(titulo);
+
+    ramos.filter(r => r.semestre === i).forEach(ramo => {
+      const ramoDiv = crearRamo(ramo);
+      columna.appendChild(ramoDiv);
+    });
+
+    mallaDiv.appendChild(columna);
+  }
 }
 
 actualizarTodo();
+
