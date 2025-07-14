@@ -92,7 +92,6 @@ function crearRamo(ramo, columna) {
   const div = document.createElement("div");
   div.className = "ramo";
   div.textContent = ramo.nombre;
-  div.style.gridColumn = columna;
 
   function actualizarEstado() {
     if (aprobados.includes(ramo.nombre)) {
